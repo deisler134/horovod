@@ -43,6 +43,11 @@ If you have installed NCCL 2 using the Ubuntu package, you can simply run:
 ```bash
 $ HOROVOD_GPU_ALLREDUCE=NCCL pip install --no-cache-dir horovod
 ```
+If you encounter "error: mpicxx -show failed, is MPI in $PATH?"
+
+```bash
+$ sudo ldconfig
+```
 
 **Note**: Some models with a high computation to communication ratio benefit from doing allreduce on CPU, even if a
 GPU version is available. To force allreduce to happen on CPU, pass `device_dense='/cpu:0'` to `hvd.DistributedOptimizer`:
